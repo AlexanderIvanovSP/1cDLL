@@ -1,0 +1,37 @@
+﻿// RandomDLL.idl: источник языка IDL для RandomDLL
+//
+
+// Этот файл будет обработан средством MIDL для
+// создание библиотеки типов ($handlersafeidlname$.tlb) и кода маршалирования.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(f928a3b0-0d9a-4951-883b-c40fc7e98636),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IExampleRandom : IDispatch
+{
+	[id(1), helpstring("Возвращает случайное число")] HRESULT GetRandomValue([in] LONG* in_param, [out, retval] LONG* out_param);
+};
+[
+	uuid(42bb9c55-ac32-46f3-98b7-bc0cd5430399),
+	version(1.0),
+]
+library RandomDLLLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(8a95b911-c9c9-40b8-82e4-30f240c77559)
+	]
+	coclass ExampleRandom
+	{
+		[default] interface IExampleRandom;
+	};
+};
+
+import "shobjidl.idl";

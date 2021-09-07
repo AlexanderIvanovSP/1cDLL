@@ -1,0 +1,26 @@
+HKCR
+{
+	RandomDLL.Random.1 = s 'ExampleRandom class'
+	{
+		CLSID = s '{8a95b911-c9c9-40b8-82e4-30f240c77559}'
+	}
+	RandomDLL.Random = s 'ExampleRandom class'
+	{		
+		CurVer = s 'RandomDLL.Random.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {8a95b911-c9c9-40b8-82e4-30f240c77559} = s 'ExampleRandom class'
+		{
+			ProgID = s 'RandomDLL.Random.1'
+			VersionIndependentProgID = s 'RandomDLL.Random'
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{42bb9c55-ac32-46f3-98b7-bc0cd5430399}'
+			Version = s '1.0'
+		}
+	}
+}
